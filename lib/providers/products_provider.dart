@@ -43,12 +43,6 @@ class ProductsProvider with ChangeNotifier {
     return _items.firstWhere((element) => element.id == id);
   }
 
-  void setFavorite(String id) {
-    final idx = _items.indexWhere((element) => element.id == id);
-    _items[idx].isFavorite = !_items[idx].isFavorite;
-    notifyListeners();
-  }
-
   void addProduct(Product product) {
     _items.add(product);
     notifyListeners();
