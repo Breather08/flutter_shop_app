@@ -22,14 +22,16 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = context.watch<ProductItemProvider>().product;
+    final product = context.read<ProductItemProvider>().product;
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: GridTile(
         footer: GridTileBar(
           leading: IconButton(
-            icon: Icon(
-                product.isFavorite ? Icons.favorite : Icons.favorite_outline),
+            icon: Consumer<ProductItemProvider>(
+              builder: (ctx, provider, child) => Icon(
+                  product.isFavorite ? Icons.favorite : Icons.favorite_outline),
+            ),
             onPressed: () => toggleFavorite(context),
           ),
           trailing: IconButton(
