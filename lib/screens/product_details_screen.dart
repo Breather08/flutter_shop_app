@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/providers/products_provider.dart';
 
 class ProductDetailsScreenArguments {
-  final String title;
+  final String id;
 
-  ProductDetailsScreenArguments(this.title);
+  ProductDetailsScreenArguments({required this.id});
 }
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -13,9 +15,10 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final product = context.watch<ProductsProvider>().findById(args.id);
     return Scaffold(
       appBar: AppBar(
-        title: Text(args.title),
+        title: Text(product.title),
       ),
     );
   }
