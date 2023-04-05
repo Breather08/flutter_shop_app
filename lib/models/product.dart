@@ -1,3 +1,8 @@
+enum ProductFilter {
+  favorite,
+  all,
+}
+
 class Product {
   final String id;
   final String title;
