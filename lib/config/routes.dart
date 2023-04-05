@@ -12,6 +12,6 @@ class AppRouter extends RouteManager {
           RouteManager.extractArguments<ProductDetailsScreenArguments>(context);
       return ProductDetailsScreen(args);
     });
-    addRoute(AppRouter.products, (context) => ProductOverviewScreen());
+    addRoute(AppRouter.products, (context) => const ProductOverviewScreen());
   }
 }
