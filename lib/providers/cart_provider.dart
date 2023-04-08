@@ -16,6 +16,11 @@ class CartProvider with ChangeNotifier {
     return total;
   }
 
+  void removeItem(String id) {
+    _items.remove(id);
+    notifyListeners();
+  }
+
   void addItem(CartItem cartItem) {
     if (items.containsKey(cartItem.id)) {
       _items.update(
