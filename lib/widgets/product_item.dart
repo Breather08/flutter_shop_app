@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/config/routes.dart';
+import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/models/product.dart';
+import 'package:shop_app/providers/cart_provider.dart';
 import 'package:shop_app/providers/product_item_provider.dart';
 import 'package:shop_app/providers/products_provider.dart';
 import 'package:shop_app/screens/product_details_screen.dart';
@@ -13,7 +15,11 @@ class ProductItem extends StatelessWidget {
     ctx.read<ProductItemProvider>().toggleFavoriteStatus();
   }
 
-  void addToCart() {}
+  void addToCart(BuildContext ctx, Product product) {
+    final cartProvider = ctx.read<CartProvider>();
+    cartProvider.addItem(
+        CartItem(id: product.id, title: product.title, price: product.price));
+  }
 
   void onTileTap(BuildContext ctx, String id) {
     Navigator.pushNamed(ctx, AppRouter.productDetails,
@@ -34,7 +40,7 @@ class ProductItem extends StatelessWidget {
           ),
           trailing: IconButton(
             icon: const Icon(Icons.shopping_cart),
-            onPressed: addToCart,
+            onPressed: () => addToCart(context, product),
           ),
           backgroundColor: Colors.black54,
           title: Text(
