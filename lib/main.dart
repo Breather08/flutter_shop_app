@@ -15,7 +15,10 @@ class ShopApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
+
     return MaterialApp(
+      scaffoldMessengerKey: scaffoldKey,
       title: 'Shop App',
       routes: AppRouter().routes,
       initialRoute: AppRouter.products,
