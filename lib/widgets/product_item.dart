@@ -16,6 +16,19 @@ class ProductItem extends StatelessWidget {
   }
 
   void addToCart(BuildContext ctx, Product product) {
+    if (!ctx.read<CartProvider>().items.containsKey(product.id)) {
+      ScaffoldMessenger.of(ctx).hideCurrentSnackBar();
+      final snackBar = SnackBar(
+        content: const Text('Item added to cart'),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            ctx.read<CartProvider>().removeItem(product.id);
+          },
+        ),
+      );
+      ScaffoldMessenger.of(ctx).showSnackBar(snackBar);
+    }
     final cartProvider = ctx.read<CartProvider>();
     cartProvider.addItem(
         CartItem(id: product.id, title: product.title, price: product.price));

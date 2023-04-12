@@ -2,11 +2,8 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/config/routes.dart';
-import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/models/product.dart';
 import 'package:shop_app/providers/cart_provider.dart';
-import 'package:shop_app/providers/products_provider.dart';
-import 'package:shop_app/widgets/product_item.dart';
 import 'package:shop_app/widgets/products_grid.dart';
 
 class ProductOverviewScreen extends StatefulWidget {
